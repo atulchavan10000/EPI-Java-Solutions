@@ -4,10 +4,31 @@ import epi.test_framework.GenericTest;
 public class SortedListsMerge {
   @EpiTest(testDataFile = "sorted_lists_merge.tsv")
   //@include
-  public static ListNode<Integer> mergeTwoSortedLists(ListNode<Integer> L1,
-                                                      ListNode<Integer> L2) {
+  public static ListNode<Integer> mergeTwoSortedLists(ListNode<Integer> L1, ListNode<Integer> L2) {
     // TODO - you fill in here.
-    return null;
+	  
+	/* Complexity Analysis
+	 * O(n + m) Time 
+	 * O (1) Space, since we are using existing nodes.
+	 * n - number of nodes in L1, m - number of nodes in L2
+	 * */ 
+	  
+    ListNode<Integer> dummyHead = new ListNode<Integer>(0, null);
+    ListNode<Integer> current = dummyHead;
+    
+    while(L1 != null && L2 != null) {
+    	if(L1.data <= L2.data) {
+    		current.next = L1;
+    		L1 = L1.next; 
+    	}else {
+    		current.next = L2;
+    		L2 = L2.next;
+    	}
+    	current = current.next;
+    }
+      // append the remaining nodes
+      current.next = L1 != null ? L1 : L2;
+	  return dummyHead.next;
   }
 
   public static void main(String[] args) {
