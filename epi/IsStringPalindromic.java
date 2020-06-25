@@ -6,6 +6,18 @@ public class IsStringPalindromic {
 
   public static boolean isPalindromic(String s) {
     // TODO - you fill in here.
+	
+	  int i= 0, j = s.length() -1;
+	  while(i < j) {
+		  // i and j keep looking for alphanumeric chars
+		  while(i<j && !Character.isLetterOrDigit(s.charAt(i))) i++;
+		  while(i<j && !Character.isLetterOrDigit(s.charAt(j))) j--;
+		  
+		  if(Character.toLowerCase(s.charAt(i++)) != Character.toLowerCase(s.charAt(j--))) {
+			  return false;
+		  }
+	  }
+	  
     return true;
   }
 
