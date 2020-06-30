@@ -8,6 +8,22 @@ public class TwoSortedArraysMerge {
   public static void mergeTwoSortedArrays(List<Integer> A, int m,
                                           List<Integer> B, int n) {
     // TODO - you fill in here.
+	  
+	int indexA = m - 1;
+	int indexB = n - 1;
+	
+	int mergedIndex = m + n - 1;
+	
+	while(indexB >= 0) {
+		if(indexA >=0 && A.get(indexA) > B.get(indexB)) {
+			A.set(mergedIndex, A.get(indexA));
+			indexA--;
+		}else {
+			A.set(mergedIndex, B.get(indexB));
+			indexB--;
+		}
+		mergedIndex--;
+	}
     return;
   }
   @EpiTest(testDataFile = "two_sorted_arrays_merge.tsv")
